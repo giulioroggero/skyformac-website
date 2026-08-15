@@ -2,6 +2,8 @@
 
 Static marketing site for [Sky For Mac](https://github.com/giulioroggero/skyformac), published via GitHub Pages.
 
+**Live site:** https://giulioroggero.github.io/skyformac-website/
+
 Plain HTML/CSS, no build step — `index.html` + `assets/`. To preview locally:
 
 ```
