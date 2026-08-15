@@ -188,7 +188,7 @@ header.site-nav {
   border: 1px solid var(--border);
   box-shadow: 0 40px 100px -40px #000000cc, 0 0 0 1px #ffffff08;
 }
-.hero-media img { width: 100%; }
+.hero-media img, .hero-media video { width: 100%; }
 
 /* Section scaffolding */
 section { padding: 88px 0; }
