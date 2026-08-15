@@ -1,0 +1,413 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sky For Mac — Native ZWO ASI Astrophotography Capture for macOS</title>
+<meta name="description" content="Sky For Mac is a free, open-source, native SwiftUI/Metal astrophotography capture app for ZWO ASI cameras on macOS — live stacking, planetary imaging, polar alignment, and more.">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32.png">
+<link rel="apple-touch-icon" href="assets/img/favicon-180.png">
+<link rel="stylesheet" href="assets/css/style.css">
+
+<meta property="og:title" content="Sky For Mac — Native ZWO ASI Astrophotography Capture for macOS">
+<meta property="og:description" content="A free, open-source, GPU-accelerated astrophotography capture app for ZWO ASI cameras, built natively for macOS.">
+<meta property="og:image" content="assets/img/m57-live.jpg">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+<body>
+
+<header class="site-nav">
+  <div class="nav-inner">
+    <a class="brand" href="#top">
+      <img src="assets/img/app-icon.png" alt="Sky For Mac icon">
+      Sky For Mac
+    </a>
+    <nav class="nav-links">
+      <a href="#features">Features</a>
+      <a href="#screenshots">Screenshots</a>
+      <a href="#download">Download</a>
+      <a href="#app-store">Why not the App Store?</a>
+      <a href="#license">License</a>
+    </nav>
+    <a class="nav-cta btn-secondary btn" href="https://github.com/giulioroggero/skyformac" target="_blank" rel="noopener">
+      GitHub ↗
+    </a>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap">
+      <span class="status-pill"><span class="dot"></span> Active development — pre-1.0, no App Store release</span>
+      <h1>Point a ZWO camera at the sky.<br>Get a live view, right on your Mac.</h1>
+      <p class="tagline">
+        Sky For Mac is a free, open-source, native SwiftUI + Metal capture app for ZWO ASI
+        cameras — a SharpCap-style tool built from scratch for macOS, not ported through
+        Wine or a JVM. Live stacking, planetary bursts, polar alignment, and full FITS/TIFF/PNG
+        export, straight off the sensor.
+      </p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#download">⬇ Download for macOS</a>
+        <a class="btn btn-secondary" href="https://github.com/giulioroggero/skyformac" target="_blank" rel="noopener">
+          ★ View on GitHub
+        </a>
+      </div>
+      <p class="hero-sub-note">macOS 14+ · GPLv3 · no telemetry, no account, no cloud dependency</p>
+
+      <div class="hero-media">
+        <img src="assets/img/saturn-live-stacking.gif" alt="Live stacking Saturn in Sky For Mac, showing the running-average stack sharpen up in real time">
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY NATIVE -->
+  <section class="alt">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Why a native Mac app</span>
+        <h2>Most ASI capture software treats macOS as an afterthought.</h2>
+        <p>
+          SharpCap, FireCapture, and most of the rest of the ZWO ecosystem are
+          Windows-native or Java-based — running on a Mac only through Wine, Parallels,
+          or a JVM, none of which were built with Apple Silicon or this hardware in mind.
+          Sky For Mac is SwiftUI/AppKit from the ground up, which makes a few things
+          possible that a ported tool generally can't do:
+        </p>
+      </div>
+      <div class="why-grid">
+        <div class="why-item">
+          <h4>⚡ Real GPU acceleration</h4>
+          <p>Debayering, display stretch, denoise, wavelet sharpening, histograms, and live
+          stacking all run as genuine Metal compute shaders on Apple Silicon — not a
+          CPU fallback because the fast path was written for DirectX only.</p>
+        </div>
+        <div class="why-item">
+          <h4>📱 An iPhone as a capture source</h4>
+          <p>Continuity Camera turns a paired iPhone into a live afocal-projection
+          camera — real focus-lock and frame-stacked Night Mode — an Apple-ecosystem
+          capability a cross-platform tool can't offer on any OS.</p>
+        </div>
+        <div class="why-item">
+          <h4>🔭 Apple's Vision framework</h4>
+          <p>Star/streak/planet detection and the live plate-solve run through the same
+          on-device Vision framework macOS itself uses, instead of a bundled
+          third-party computer-vision library.</p>
+        </div>
+        <div class="why-item">
+          <h4>🧵 Swift's actor model, enforced</h4>
+          <p>Every blocking ZWO SDK call is isolated onto its own actor — not just a
+          convention to remember, but something the compiler checks — so a multi-second
+          USB handshake or a long exposure can never freeze the UI.</p>
+        </div>
+        <div class="why-item">
+          <h4>🔒 Runs entirely locally</h4>
+          <p>No telemetry, no cloud account, no network dependency beyond what the camera
+          itself needs — and the source is open, so all of this is verifiable rather
+          than taken on faith.</p>
+        </div>
+        <div class="why-item">
+          <h4>🆓 Free and open source</h4>
+          <p>GPLv3-licensed, with an explicit exception permitting linking against ZWO's
+          closed-source camera SDK. No purchase, no subscription, no account.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURES -->
+  <section id="features">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Features</span>
+        <h2>Everything from first light to a finished stack</h2>
+        <p>A live preview, deep per-camera controls, and dedicated workflows for
+        planetary bursts, deep-sky stacking, and long-term projects.</p>
+      </div>
+      <div class="feature-grid">
+        <div class="feature-card">
+          <div class="icon">📷</div>
+          <h3>Live camera control</h3>
+          <p>Connect any ZWO ASI camera over USB — or an iPhone via Continuity Camera,
+          or any webcam — for a live preview with full gain/exposure/binning/offset
+          control and one-tap gain/offset presets.</p>
+        </div>
+        <div class="feature-card">
+          <div class="icon">🌀</div>
+          <h3>Live Stack &amp; Smart Live Stack</h3>
+          <p>Running-average stacking with optional single-star drift correction or
+          experimental mesh-based tracking for field rotation. Smart Live Stack
+          auto-curates, skipping soft or cloud-flagged frames with a live SNR readout.</p>
+        </div>
+        <div class="feature-card">
+          <div class="icon">🪐</div>
+          <h3>Planetary &amp; Lucky Imaging</h3>
+          <p>Small-ROI, high-FPS burst capture with sharpness-ranked frame stacking,
+          Vision-tracked auto-centering, and one-tap presets for Saturn, Jupiter, Mars,
+          Venus, and the Moon.</p>
+        </div>
+        <div class="feature-card">
+          <div class="icon">🧭</div>
+          <h3>Acquisition Wizard</h3>
+          <p>Pick a target — planet, Moon, or a curated deep-sky list — and get ROI,
+          gain, exposure, and the right stacking mode set up in one step. Save and
+          load full setups as reusable presets.</p>
+        </div>
+        <div class="feature-card">
+          <div class="icon">🎯</div>
+          <h3>Polar alignment &amp; ST4 guiding</h3>
+          <p>A two-frame rotation-center solve with a live on-screen correction vector,
+          plus manual ST4 pulse-guide controls for cameras that report a real
+          ST4 port.</p>
+        </div>
+        <div class="feature-card">
+          <div class="icon">🖤</div>
+          <h3>Dark/flat calibration</h3>
+          <p>Capture and manage any number of named dark and flat frames, with
+          subtraction/correction toggled independently on the GPU or CPU path.</p>
+        </div>
+        <div class="feature-card">
+          <div class="icon">🎚️</div>
+          <h3>Histogram &amp; Curves</h3>
+          <p>Per-channel histogram with independent Black/White Point sliders for
+          correcting a light-polluted sky's color cast, plus a Photoshop-style
+          master + RGB Curves panel that detaches into its own window.</p>
+        </div>
+        <div class="feature-card">
+          <div class="icon">🧠</div>
+          <h3>Denoise &amp; wavelet sharpening</h3>
+          <p>Real-time bilateral denoise and wavelet sharpening as Metal compute
+          kernels, plus a satellite/aircraft trail masker and a Cloud Cover &amp;
+          Drift Sentinel — never baked into exported raw data.</p>
+        </div>
+        <div class="feature-card">
+          <div class="icon">🎞️</div>
+          <h3>SER video &amp; export</h3>
+          <p>Record every incoming frame undiscarded to a single .ser file for
+          AutoStakkert!/PIPP/RegiStax, or export single frames/stacks to
+          FITS (with BAYERPAT header), PNG, or TIFF.</p>
+        </div>
+        <div class="feature-card">
+          <div class="icon">🗂️</div>
+          <h3>Projects &amp; sessions</h3>
+          <p>An iMovie-style library of projects and sessions with timelines,
+          auto-generated capture notes, GPS/manual location, tags, ratings,
+          favorites, and a sky-position Atlas view.</p>
+        </div>
+        <div class="feature-card">
+          <div class="icon">🛠️</div>
+          <h3>Equipment manager</h3>
+          <p>Named equipment systems — camera, mount, optical tube, and optional
+          guiding/power/eyepiece gear — assignable per project and inherited by
+          each session.</p>
+        </div>
+        <div class="feature-card">
+          <div class="icon">🤖</div>
+          <h3>Local AI panel</h3>
+          <p>A grounded chat panel talking to a local Ollama server — nothing leaves
+          your machine — that can propose a project, a session, or a camera setting
+          change, always behind an explicit Approve/Reject card.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SCREENSHOTS -->
+  <section id="screenshots" class="alt">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Screenshots</span>
+        <h2>Straight off the sensor</h2>
+        <p>Unedited live-view captures from real first-light test sessions —
+        no post-processing beyond the app's own live GPU pipeline.
+        See the full, up-to-date catalog in
+        <a href="https://github.com/giulioroggero/skyformac/blob/main/EXAMPLES.md" target="_blank" rel="noopener">EXAMPLES.md</a>.</p>
+      </div>
+      <div class="gallery">
+        <figure>
+          <img src="assets/img/m57-live.jpg" alt="M57, the Ring Nebula, live view in Sky For Mac" loading="lazy">
+          <figcaption><strong>M57 (Ring Nebula)</strong> — live view</figcaption>
+        </figure>
+        <figure>
+          <img src="assets/img/m13.jpg" alt="M13, the Hercules Globular Cluster, resolved live with GPU enhancement in Sky For Mac" loading="lazy">
+          <figcaption><strong>M13 (Hercules Globular Cluster)</strong> — individual stars resolved live, with Live GPU Enhancement enabled</figcaption>
+        </figure>
+        <figure>
+          <img src="assets/img/saturn.jpg" alt="Saturn captured live in Sky For Mac" loading="lazy">
+          <figcaption><strong>Saturn</strong> — planetary live view</figcaption>
+        </figure>
+        <figure>
+          <img src="assets/img/arcturus.jpg" alt="Arcturus, a bright-star test capture, in Sky For Mac" loading="lazy">
+          <figcaption><strong>Arcturus</strong> — bright-star focus/framing test, high gain, suburban sky</figcaption>
+        </figure>
+        <figure>
+          <img src="assets/img/m57-night.jpg" alt="M57 in Sky For Mac's red-tinted Night Mode UI" loading="lazy">
+          <figcaption><strong>Night Mode</strong> — a red-only UI tint that preserves dark adaptation without touching the live image</figcaption>
+        </figure>
+        <figure>
+          <img src="assets/img/saturn-live-stacking.png" alt="Saturn live-stacking progress in Sky For Mac" loading="lazy">
+          <figcaption><strong>Live Stack</strong> — running-average stacking sharpening up a planetary target in real time</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- DOWNLOAD -->
+  <section id="download">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Download</span>
+        <h2>Get the latest build</h2>
+        <p>Distributed directly from GitHub Releases — not the Mac App Store.
+        See <a href="#app-store">why</a> below.</p>
+      </div>
+
+      <div class="download-card">
+        <div>
+          <h3>macOS build, signed</h3>
+          <p>
+            A universal build of Sky For Mac, code-signed for local execution.
+            It is <strong>not</strong> notarized by Apple (that requires a paid Apple
+            Developer Program membership — see <a href="#app-store">below</a>), so Gatekeeper
+            will flag it as being from an unidentified developer on first launch.
+          </p>
+          <ul class="download-meta">
+            <li><strong>Requires:</strong> macOS 14.0 or later, Apple Silicon or Intel</li>
+            <li><strong>Camera:</strong> a ZWO ASI camera over USB, or any webcam / Continuity Camera iPhone</li>
+            <li><strong>Format:</strong> .zip containing skyformac.app</li>
+            <li><strong>License:</strong> GPLv3, free to use and modify</li>
+          </ul>
+        </div>
+        <div class="download-panel">
+          <div class="version">Latest release · v0.3.0</div>
+          <a class="btn btn-primary" style="width:100%; justify-content:center; margin-bottom:12px;"
+             href="https://github.com/giulioroggero/skyformac/releases/latest" target="_blank" rel="noopener">
+            ⬇ Go to latest release
+          </a>
+          <a class="btn btn-secondary" style="width:100%; justify-content:center;"
+             href="https://github.com/giulioroggero/skyformac/releases/download/v0.2.0/skyformac-v0.2.0-macOS.zip" target="_blank" rel="noopener">
+            Direct download <small>(v0.2.0-macOS.zip)</small>
+          </a>
+          <div class="gatekeeper-note">
+            After unzipping, if macOS refuses to open the app: right-click
+            <strong>skyformac.app</strong> → <strong>Open</strong> → <strong>Open</strong> again
+            in the confirmation dialog. This is only needed once. Or from Terminal:
+            <br><code>xattr -dr com.apple.quarantine skyformac.app</code>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- APP STORE -->
+  <section id="app-store" class="alt">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">FAQ</span>
+        <h2>Why isn't this on the Mac App Store?</h2>
+      </div>
+      <div class="callout">
+        <h3>⚠ It's GPLv3-licensed, and that's a real, unresolved conflict</h3>
+        <ul>
+          <li>
+            <strong>License incompatibility.</strong> Apple's App Store Terms have
+            historically been read by the FSF and others as imposing usage/DRM
+            restrictions that conflict with <strong>GPLv3 §6</strong> ("Conveying
+            Non-Source Forms") — this has caused real GPLv3 apps to be pulled from,
+            or never submitted to, the App Store in the past.
+          </li>
+          <li>
+            <strong>App Sandbox isn't on yet.</strong> Store distribution requires
+            App Sandbox, and turning it on isn't a small toggle here: existing
+            users' project data lives in <code>~/Documents</code>, which a sandboxed
+            app can no longer see without a real migration step, and the vendored
+            ZWO ASI camera SDK's behavior under a sandboxed, hardened-runtime build
+            is untested against real hardware.
+          </li>
+          <li>
+            <strong>No Apple Developer Program enrollment yet.</strong> Store
+            distribution needs a paid ($99/year) membership tied to a real Team ID —
+            administrative setup that hasn't happened, independent of the licensing
+            question above.
+          </li>
+        </ul>
+        <p style="margin-top:18px; color: var(--text-dim); font-size:0.92rem;">
+          None of this is against the spirit of open source — quite the opposite.
+          Distributing directly from GitHub keeps Sky For Mac's GPLv3 freedoms
+          (use, study, modify, redistribute) fully intact, with nothing depending on
+          Apple's review or continued Store presence to keep working.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- LICENSE -->
+  <section id="license">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">License</span>
+        <h2>Free and open source — GPLv3</h2>
+        <p>Sky For Mac is licensed under the GNU General Public License v3,
+        with one explicit additional permission.</p>
+      </div>
+      <div class="license-grid">
+        <div class="license-card">
+          <h4>📜 GPLv3</h4>
+          <p>
+            You're free to use, study, modify, and redistribute Sky For Mac —
+            including commercially — as long as derivative works are shared under
+            the same license. Full text in
+            <a href="https://github.com/giulioroggero/skyformac/blob/main/LICENSE.md" target="_blank" rel="noopener">LICENSE.md</a>.
+          </p>
+        </div>
+        <div class="license-card">
+          <h4>🔌 Special exception for the camera SDK</h4>
+          <p>
+            An additional permission under GPLv3 §7 explicitly allows linking Sky For
+            Mac against closed-source camera driver SDKs — specifically ZWO's proprietary
+            ASI Camera SDK (<code>libASICamera2</code>) — and distributing the resulting
+            binary, without that closed-source dependency "infecting" the rest of the
+            license.
+          </p>
+        </div>
+        <div class="license-card">
+          <h4>🛰️ Third-party notices</h4>
+          <p>
+            The vendored ZWO ASI Camera SDK is © ZWO Co., Ltd. under its own SDK
+            terms. The bundled Messier/Caldwell/bright-star catalog is a small subset
+            of the <a href="https://stellarium.org" target="_blank" rel="noopener">Stellarium</a>
+            project's DSO data (GPLv2). Full attributions in
+            <a href="https://github.com/giulioroggero/skyformac/blob/main/THIRD_PARTY_NOTICES.md" target="_blank" rel="noopener">THIRD_PARTY_NOTICES.md</a>.
+          </p>
+        </div>
+        <div class="license-card">
+          <h4>🤝 No telemetry, ever</h4>
+          <p>
+            Everything runs locally. No analytics SDK, no crash reporter phoning
+            home, no account, no cloud dependency beyond what the camera itself
+            needs — and since the source is open, that's independently verifiable
+            rather than a claim to take on faith.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap footer-inner">
+    <div>© 2026 Giulio Roggero · Sky For Mac is free software, licensed under GPLv3.</div>
+    <div class="footer-links">
+      <a href="https://github.com/giulioroggero/skyformac" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://github.com/giulioroggero/skyformac/issues" target="_blank" rel="noopener">Issues</a>
+      <a href="https://github.com/giulioroggero/skyformac/blob/main/CHANGELOG.md" target="_blank" rel="noopener">Changelog</a>
+      <a href="https://github.com/giulioroggero/skyformac/blob/main/LICENSE.md" target="_blank" rel="noopener">License</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
