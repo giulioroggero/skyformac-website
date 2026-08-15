@@ -414,10 +414,20 @@
             Direct download <small>(v0.4.0-macOS.zip)</small>
           </a>
           <div class="gatekeeper-note">
-            After unzipping, if macOS refuses to open the app: right-click
-            <strong>skyformac.app</strong> → <strong>Open</strong> → <strong>Open</strong> again
-            in the confirmation dialog. This is only needed once. Or from Terminal:
-            <br><code>xattr -dr com.apple.quarantine skyformac.app</code>
+            <strong>Installing:</strong> unzip the download, then open a Terminal in that
+            folder and run:
+            <br><code>bash "Fix Gatekeeper Warning.command"</code>
+            <br>This moves skyformac.app into <code>/Applications</code>, clears the
+            Gatekeeper quarantine flag, and resets the Camera permission (needed once per
+            release, since the iPhone/webcam source can otherwise get silently stuck denied —
+            the ZWO ASI camera isn't affected). Running it from Terminal skips the extra
+            "Apple could not verify this app" prompt that double-clicking it in Finder
+            triggers first.
+            <br><br>
+            Prefer Finder? Right-click <strong>Fix Gatekeeper Warning.command</strong> →
+            <strong>Open</strong> → <strong>Open</strong> again in the confirmation dialog,
+            then do the same for <strong>skyformac.app</strong> in <code>/Applications</code>
+            once the script has moved it there.
           </div>
         </div>
       </div>
