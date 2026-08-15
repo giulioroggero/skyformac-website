@@ -3,14 +3,14 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Sky For Mac — Native ZWO ASI Astrophotography Capture for macOS</title>
-<meta name="description" content="Sky For Mac is a free, open-source, native SwiftUI/Metal astrophotography capture app for ZWO ASI cameras on macOS — live stacking, planetary imaging, polar alignment, and more.">
+<title>Sky For Mac — Native Astrophotography Capture for macOS</title>
+<meta name="description" content="Sky For Mac is a free, open-source, native SwiftUI/Metal astrophotography capture app for macOS — ZWO ASI cameras today, with more camera brands on the roadmap. Live stacking, planetary imaging, polar alignment, and more.">
 <link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32.png">
 <link rel="apple-touch-icon" href="assets/img/favicon-180.png">
 <link rel="stylesheet" href="assets/css/style.css">
 
-<meta property="og:title" content="Sky For Mac — Native ZWO ASI Astrophotography Capture for macOS">
-<meta property="og:description" content="A free, open-source, GPU-accelerated astrophotography capture app for ZWO ASI cameras, built natively for macOS.">
+<meta property="og:title" content="Sky For Mac — Native Astrophotography Capture for macOS">
+<meta property="og:description" content="A free, open-source, GPU-accelerated astrophotography capture app for macOS — ZWO ASI cameras today, with more camera brands planned.">
 <meta property="og:image" content="assets/img/m57-live.jpg">
 <meta property="og:type" content="website">
 <meta name="twitter:card" content="summary_large_image">
@@ -27,6 +27,7 @@
       <a href="#features">Features</a>
       <a href="#app-tour">App Tour</a>
       <a href="#captures">Captures</a>
+      <a href="#roadmap">Roadmap</a>
       <a href="#download">Download</a>
       <a href="#app-store">Why not the App Store?</a>
       <a href="#license">License</a>
@@ -43,12 +44,13 @@
   <section class="hero">
     <div class="wrap">
       <span class="status-pill"><span class="dot"></span> Active development — pre-1.0, no App Store release</span>
-      <h1>Point a ZWO camera at the sky.<br>Get a live view, right on your Mac.</h1>
+      <h1>Point a camera at the sky.<br>Get a live view, right on your Mac.</h1>
       <p class="tagline">
-        Sky For Mac is a free, open-source, native SwiftUI + Metal capture app for ZWO ASI
-        cameras — a SharpCap-style tool built from scratch for macOS, not ported through
-        Wine or a JVM. Live stacking, planetary bursts, polar alignment, and full FITS/TIFF/PNG
-        export, straight off the sensor.
+        Sky For Mac is a free, open-source, native SwiftUI + Metal capture app for
+        astrophotography cameras — a SharpCap-style tool built from scratch for macOS,
+        not ported through Wine or a JVM. ZWO ASI cameras are supported natively today,
+        with more brands on the <a href="#roadmap">roadmap</a>. Live stacking, planetary
+        bursts, polar alignment, and full FITS/TIFF/PNG export, straight off the sensor.
       </p>
       <div class="hero-actions">
         <a class="btn btn-primary" href="#download">⬇ Download for macOS</a>
@@ -131,8 +133,9 @@
         <div class="feature-card">
           <div class="icon">📷</div>
           <h3>Live camera control</h3>
-          <p>Connect any ZWO ASI camera over USB — or an iPhone via Continuity Camera,
-          or any webcam — for a live preview with full gain/exposure/binning/offset
+          <p>Connect a ZWO ASI camera over USB — the first supported brand, with more
+          on the <a href="#roadmap">roadmap</a> — or an iPhone via Continuity Camera,
+          or any webcam, for a live preview with full gain/exposure/binning/offset
           control and one-tap gain/offset presets.</p>
         </div>
         <div class="feature-card">
@@ -315,6 +318,65 @@
     </div>
   </section>
 
+  <!-- ROADMAP -->
+  <section id="roadmap">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Roadmap</span>
+        <h2>What's next</h2>
+        <p>Sky For Mac is still pre-1.0 and under active development. ZWO ASI is the
+        first camera brand it supports, natively, via ZWO's own SDK — it won't be
+        the last. Roughly in priority order:</p>
+      </div>
+      <div class="why-grid">
+        <div class="why-item">
+          <span class="roadmap-status planned">Planned</span>
+          <h4>📷 More camera brands</h4>
+          <p>ZWO ASI is supported natively today. Additional camera brands are planned
+          next — each one needs its own SDK integration and real hardware to test
+          against, so support lands brand by brand rather than all at once.</p>
+        </div>
+        <div class="why-item">
+          <span class="roadmap-status blocked">In progress</span>
+          <h4>🔐 App Sandbox</h4>
+          <p>Currently off. Turning it on needs a real migration for existing users'
+          <code>~/Documents</code> project data, plus verifying the vendored ZWO SDK's
+          raw USB access still works under a sandboxed, hardened-runtime build.</p>
+        </div>
+        <div class="why-item">
+          <span class="roadmap-status planned">Planned</span>
+          <h4>✅ Notarized, Developer ID-signed builds</h4>
+          <p>Today's releases are ad-hoc signed for local execution only. A real
+          Apple Developer Program membership and Developer ID certificate would let
+          releases launch without a Gatekeeper right-click.</p>
+        </div>
+        <div class="why-item">
+          <span class="roadmap-status planned">Planned</span>
+          <h4>🎯 ST4 guiding on real hardware</h4>
+          <p>The manual ST4 pulse-guide controls are implemented but untested end to
+          end — no ST4-cabled mount has been available yet to confirm a pulse
+          produces a real correction.</p>
+        </div>
+        <div class="why-item">
+          <span class="roadmap-status exploring">Exploring</span>
+          <h4>🏪 Mac App Store submission</h4>
+          <p>Blocked on more than paperwork: Apple's Store terms have historically
+          been read as conflicting with GPLv3 §6. Worth resolving — legal advice, FSF
+          guidance, or relicensing the distributed binary — before a submission,
+          not after. See <a href="#app-store">why it isn't there yet</a>.</p>
+        </div>
+        <div class="why-item">
+          <span class="roadmap-status contribute">Get involved</span>
+          <h4>🔧 Hardware to test against</h4>
+          <p>If you have a ZWO (or other) camera, mount, or other astro gear you'd be
+          willing to lend or send for compatibility testing, that directly speeds up
+          this list — reach out via
+          <a href="https://github.com/giulioroggero/skyformac/issues" target="_blank" rel="noopener">Issues</a>.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- DOWNLOAD -->
   <section id="download">
     <div class="wrap">
@@ -336,7 +398,7 @@
           </p>
           <ul class="download-meta">
             <li><strong>Requires:</strong> macOS 14.0 or later, Apple Silicon or Intel</li>
-            <li><strong>Camera:</strong> a ZWO ASI camera over USB, or any webcam / Continuity Camera iPhone</li>
+            <li><strong>Camera:</strong> a ZWO ASI camera over USB (first supported brand — <a href="#roadmap">more planned</a>), or any webcam / Continuity Camera iPhone</li>
             <li><strong>Format:</strong> .zip containing skyformac.app</li>
             <li><strong>License:</strong> GPLv3, free to use and modify</li>
           </ul>

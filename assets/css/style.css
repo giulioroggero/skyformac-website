@@ -253,6 +253,38 @@ section.alt { background: linear-gradient(180deg, transparent, #ffffff03, transp
 }
 .why-item p { margin: 0; color: var(--text-dim); font-size: 0.92rem; }
 
+/* Roadmap status badges */
+.roadmap-status {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: 999px;
+  margin-bottom: 12px;
+}
+.roadmap-status.planned {
+  color: var(--accent);
+  background: #7fb0ff1a;
+  border: 1px solid #7fb0ff40;
+}
+.roadmap-status.blocked {
+  color: var(--warn);
+  background: #ffb86b1a;
+  border: 1px solid #ffb86b40;
+}
+.roadmap-status.exploring {
+  color: var(--accent-2);
+  background: #d9a5ff1a;
+  border: 1px solid #d9a5ff40;
+}
+.roadmap-status.contribute {
+  color: var(--good);
+  background: #7fe0b01a;
+  border: 1px solid #7fe0b040;
+}
+
 /* Gallery */
 .gallery {
   display: grid;
