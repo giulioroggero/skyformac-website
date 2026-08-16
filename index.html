@@ -404,35 +404,43 @@
           <ul class="download-meta">
             <li><strong>Requires:</strong> macOS 14.0 or later, Apple Silicon or Intel</li>
             <li><strong>Camera:</strong> a ZWO ASI camera over USB (first supported brand — <a href="#roadmap">more planned</a>), or any webcam / Continuity Camera iPhone</li>
-            <li><strong>Format:</strong> .zip containing skyformac.app</li>
+            <li><strong>Format:</strong> .dmg (drag-to-Applications installer) or .zip, same contents</li>
             <li><strong>License:</strong> GPLv3, free to use and modify</li>
           </ul>
         </div>
         <div class="download-panel">
           <div class="version">Latest release · v0.4.0</div>
           <a class="btn btn-primary" style="width:100%; justify-content:center; margin-bottom:12px;"
-             href="https://github.com/giulioroggero/skyformac/releases/latest" target="_blank" rel="noopener">
-            ⬇ Go to latest release
+             href="https://github.com/giulioroggero/skyformac/releases/download/v0.4.0/skyformac-v0.4.0-macOS.dmg" target="_blank" rel="noopener">
+            ⬇ Download .dmg <small>(v0.4.0)</small>
+          </a>
+          <a class="btn btn-secondary" style="width:100%; justify-content:center; margin-bottom:12px;"
+             href="https://github.com/giulioroggero/skyformac/releases/download/v0.4.0/skyformac-v0.4.0-macOS.zip" target="_blank" rel="noopener">
+            Or the .zip <small>(v0.4.0-macOS.zip)</small>
           </a>
           <a class="btn btn-secondary" style="width:100%; justify-content:center;"
-             href="https://github.com/giulioroggero/skyformac/releases/download/v0.4.0/skyformac-v0.4.0-macOS.zip" target="_blank" rel="noopener">
-            Direct download <small>(v0.4.0-macOS.zip)</small>
+             href="https://github.com/giulioroggero/skyformac/releases/latest" target="_blank" rel="noopener">
+            All releases
           </a>
           <div class="gatekeeper-note">
-            <strong>Installing:</strong> unzip the download, then open a Terminal in that
+            <strong>Installing the .dmg:</strong> open it, drag skyformac.app onto the
+            <strong>Applications</strong> shortcut, then double-click
+            <strong>Fix Gatekeeper Warning.command</strong> (still inside the mounted .dmg
+            window) — it opens a Terminal window and closes on its own once done.
+            <br><br>
+            <strong>Installing the .zip:</strong> unzip it, then open a Terminal in that
             folder and run:
             <br><code>bash "Fix Gatekeeper Warning.command"</code>
-            <br>This moves skyformac.app into <code>/Applications</code>, clears the
-            Gatekeeper quarantine flag, and resets the Camera permission (needed once per
-            release, since the iPhone/webcam source can otherwise get silently stuck denied —
-            the ZWO ASI camera isn't affected). Running it from Terminal skips the extra
-            "Apple could not verify this app" prompt that double-clicking it in Finder
-            triggers first.
             <br><br>
-            Prefer Finder? Right-click <strong>Fix Gatekeeper Warning.command</strong> →
-            <strong>Open</strong> → <strong>Open</strong> again in the confirmation dialog,
-            then do the same for <strong>skyformac.app</strong> in <code>/Applications</code>
-            once the script has moved it there.
+            Either way, the script moves skyformac.app into <code>/Applications</code>,
+            clears the Gatekeeper quarantine flag, and resets the Camera permission (needed
+            once per release, since the iPhone/webcam source can otherwise get silently
+            stuck denied — the ZWO ASI camera isn't affected). Running it from Terminal
+            skips the extra "Apple could not verify this app" prompt that double-clicking it
+            in Finder triggers first — if you do double-click it in Finder instead,
+            right-click it → <strong>Open</strong> → <strong>Open</strong> again in the
+            confirmation dialog, then do the same for <strong>skyformac.app</strong> in
+            <code>/Applications</code> once the script has moved/copied it there.
           </div>
         </div>
       </div>
