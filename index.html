@@ -437,10 +437,11 @@
             <code>brew tap giulioroggero/skyformac</code>
             <br><code>brew install --cask skyformac</code>
             <br><br>
-            First install from this tap? If Homebrew refuses with "untrusted tap," run the
-            command it prints (<code>brew trust --cask giulioroggero/skyformac/skyformac</code>)
-            and try again — a one-time trust step recent Homebrew versions require for
-            third-party taps. Published from
+            First install from this tap? Homebrew requires trusting a third-party tap once
+            before it'll install anything from it — if you hit "Refusing to load cask ...
+            from untrusted tap," run:
+            <br><code>brew trust --cask giulioroggero/skyformac/skyformac</code>
+            <br>then repeat the install command above. Published from
             <a href="https://github.com/giulioroggero/homebrew-skyformac" target="_blank" rel="noopener">giulioroggero/homebrew-skyformac</a>.
           </div>
           <p style="margin:0 0 8px; font-size:0.9em; opacity:0.75;">Or download directly:</p>
@@ -453,7 +454,7 @@
             Or the .zip <small>(v0.5.2-macOS.zip)</small>
           </a>
           <a class="btn btn-secondary" style="width:100%; justify-content:center;"
-             href="https://github.com/giulioroggero/skyformac/releases/latest" target="_blank" rel="noopener">
+             href="https://github.com/giulioroggero/skyformac/releases" target="_blank" rel="noopener">
             All releases
           </a>
           <div class="gatekeeper-note">
@@ -575,6 +576,17 @@
     </div>
   </section>
 
+  <!-- LIGHTBOX (fullscreen image viewer) -->
+  <div class="lightbox" id="lightbox" hidden>
+    <button class="lightbox-close" id="lightboxClose" aria-label="Close" title="Close (Esc)">✕</button>
+    <button class="lightbox-nav lightbox-prev" id="lightboxPrev" aria-label="Previous image" title="Previous (←)">‹</button>
+    <button class="lightbox-nav lightbox-next" id="lightboxNext" aria-label="Next image" title="Next (→)">›</button>
+    <figure class="lightbox-figure">
+      <img id="lightboxImg" alt="">
+      <figcaption id="lightboxCaption"></figcaption>
+    </figure>
+  </div>
+
 </main>
 
 <footer>
@@ -589,5 +601,6 @@
   </div>
 </footer>
 
+<script src="assets/js/lightbox.js"></script>
 </body>
 </html>
