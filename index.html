@@ -26,6 +26,7 @@
     <nav class="nav-links">
       <a href="#features">Features</a>
       <a href="#app-tour">App Tour</a>
+      <a href="#results">Results</a>
       <a href="#captures">Captures</a>
       <a href="#roadmap">Roadmap</a>
       <a href="#download">Download</a>
@@ -212,12 +213,23 @@
           hand-off for deep-sky stacking.</p>
         </div>
         <div class="feature-card">
+          <div class="icon">🧩</div>
+          <h3>Mosaic capture &amp; composition</h3>
+          <p>Capture overlapping tiles too large for one frame — different parts of
+          the Moon, or adjacent fields of a wide object like Andromeda — then compose
+          them into one larger image via real star-pattern (asterism) tile
+          registration: each tile's stars are matched against its neighbor's, a
+          similarity transform is fit, and the tiles are blended with feathered
+          edges for a smooth seam.</p>
+        </div>
+        <div class="feature-card">
           <div class="icon">🗂️</div>
           <h3>Projects &amp; sessions</h3>
           <p>An iMovie-style library of projects and sessions with timelines,
           auto-generated capture notes, GPS/manual location, tags, ratings,
-          favorites, and a sky-position Atlas view. See it in the
-          <a href="#app-tour">App Tour</a> below.</p>
+          favorites, and a sky-position Atlas view — object-grouped points sized by
+          how many sessions have targeted them, with a shaded band showing roughly
+          what's up overnight. See it in the <a href="#app-tour">App Tour</a> below.</p>
         </div>
         <div class="feature-card">
           <div class="icon">🛠️</div>
@@ -298,6 +310,34 @@
         <figure>
           <img src="assets/img/stats.png" alt="Sky For Mac's Insights page, showing overview stats, activity over time, most captured objects, and most used equipment" loading="lazy">
           <figcaption><strong>Stats</strong> — most-captured objects, most-used equipment, and activity trends aggregated across every project</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESULTS -->
+  <section id="results">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Results</span>
+        <h2>Not the live view — the finished image</h2>
+        <p>Real results from real sessions, run through Planetary Post-Processing
+        (registration, stacking, wavelet sharpening, RGB channel alignment) or
+        Edit Image (crop, curves, denoise, astronomy tools). Straight from the
+        author's own projects, unedited beyond what the app itself did.</p>
+      </div>
+      <div class="gallery">
+        <figure>
+          <img src="assets/img/moon-detail-result.jpg" alt="The Moon, post-processed with Sky For Mac's Edit Image tool, showing crisp crater and terminator detail" loading="lazy">
+          <figcaption><strong>The Moon</strong> — Edit Image, crater/terminator detail from a Lucky Imaging session</figcaption>
+        </figure>
+        <figure>
+          <img src="assets/img/m57-ring-nebula-result.jpg" alt="M57, the Ring Nebula, post-processed with Sky For Mac's Edit Image tool" loading="lazy">
+          <figcaption><strong>M57 (Ring Nebula)</strong> — Edit Image, from a live-stacked deep-sky session under a bright suburban sky</figcaption>
+        </figure>
+        <figure>
+          <img src="assets/img/saturn-post-processed-result.jpg" alt="Saturn, stacked and sharpened with Sky For Mac's Planetary Post-Processing pipeline" loading="lazy">
+          <figcaption><strong>Saturn</strong> — Planetary Post-Processing, stacked and wavelet-sharpened from a .ser recording</figcaption>
         </figure>
       </div>
     </div>
@@ -429,7 +469,7 @@
           </ul>
         </div>
         <div class="download-panel">
-          <div class="version">Latest release · v0.5.2</div>
+          <div class="version">Latest release · v0.6.0</div>
           <div class="gatekeeper-note" style="margin-bottom:12px;">
             <strong>Homebrew (recommended):</strong> handles the Gatekeeper quarantine flag
             for you automatically — no manual fix-up script needed.
@@ -446,12 +486,12 @@
           </div>
           <p style="margin:0 0 8px; font-size:0.9em; opacity:0.75;">Or download directly:</p>
           <a class="btn btn-primary" style="width:100%; justify-content:center; margin-bottom:12px;"
-             href="https://github.com/giulioroggero/skyformac/releases/download/v0.5.2/skyformac-v0.5.2-macOS.dmg" target="_blank" rel="noopener">
-            ⬇ Download .dmg <small>(v0.5.2)</small>
+             href="https://github.com/giulioroggero/skyformac/releases/download/v0.6.0/skyformac-v0.6.0-macOS.dmg" target="_blank" rel="noopener">
+            ⬇ Download .dmg <small>(v0.6.0)</small>
           </a>
           <a class="btn btn-secondary" style="width:100%; justify-content:center; margin-bottom:12px;"
-             href="https://github.com/giulioroggero/skyformac/releases/download/v0.5.2/skyformac-v0.5.2-macOS.zip" target="_blank" rel="noopener">
-            Or the .zip <small>(v0.5.2-macOS.zip)</small>
+             href="https://github.com/giulioroggero/skyformac/releases/download/v0.6.0/skyformac-v0.6.0-macOS.zip" target="_blank" rel="noopener">
+            Or the .zip <small>(v0.6.0-macOS.zip)</small>
           </a>
           <a class="btn btn-secondary" style="width:100%; justify-content:center;"
              href="https://github.com/giulioroggero/skyformac/releases" target="_blank" rel="noopener">
